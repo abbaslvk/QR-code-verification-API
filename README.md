@@ -1,1 +1,5 @@
 A qr code powered verification api that requires the connected domain to send a initialization request that gets responded with a qr code. Then the domain is required to send a "try" request every few seconds until it gets the response "verification completed succesfully.", verifying that the user has entered the provided qr code.
+How it works:
+http://qr-api.ct.ws/?cause=start  -  starts the verification session, makes a token and a qr code png file and sends it as the response. the token is saved in the database and session.
+http://qr-api.ct.ws/verification?optoken=...  -  the qr leads to this url with a unique token used for the verification. the script checks if the token is the same with the one saved in the database. if it is, it marks the entry as verified.
+http://qr-api.ct.ws/?cause=try  -  takes the session data if it exists(it must, or else start wasnt triggered before try) and checks it in the database. if it sees the verified mark, within the entry of the token, sends a "verification completed succesfully." http 200 ok response to the contacted domain, ending the verification session and wiping all the previous data from the database and session.
