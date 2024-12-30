@@ -1,0 +1,1 @@
+A qr code powered verification api that requires the connected domain to send a initialization request that gets responded with a qr code. Then the domain is required to send a "try" request every few seconds until it gets the response "verification completed succesfully.", verifying that the user has entered the provided qr code.
