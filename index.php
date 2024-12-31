@@ -24,7 +24,7 @@ if($_GET["cause"]=="start"){
 }
 else if($_GET["cause"]=="try"){
     if(isset($_SESSION["optoken"])){
-        $conn = new mysqli("sql306.infinityfree.com","if0_38006473","eKV6FOw7dtXlQFY","if0_38006473_database");
+        $conn = new mysqli("");
         if($conn->connect_error){
             http_response_code(500);
             echo "error 500: database related error.";
